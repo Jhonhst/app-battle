@@ -78,6 +78,7 @@ $(document).ready(function () {
     var holdTime = 0;
     var useMouse = false;
     var soundMuted = false;
+    var startGame = false;
 
     var key = {left: {}, right: {}};
     key.left.code = 65;
@@ -119,7 +120,7 @@ $(document).ready(function () {
             setTimeout(function () { text.html("<h1>3</h1>"); audio.tick.play(); }, 0);
             setTimeout(function () { text.html("<h1>2</h1>"); audio.tick.play(); }, 1000);
             setTimeout(function () { text.html("<h1>1</h1>"); audio.tick.play(); }, 2000);
-            setTimeout(function () { text.html("<h1>GO!</h1>"); playSound("gameStart"); gameState = 2;
+            setTimeout(function () { text.html("<h1>GO!</h1>"); playSound("gameStart"); gameState = 2; startGame = true;
             }, 3000); setTimeout(function () { text.html(""); }, 4000);
         }
     }, 100);
@@ -276,12 +277,14 @@ $(document).ready(function () {
         }
     }
     function playerKeyDown(side, elem, dir) {
-        playSound([side]);
-        $(elem).css("background-color", color[side].on);
-        key[side].down = true;
-        $("#container").css("left", "+=" + moveAmount * dir + "vw");
-        currentPosition += dir;
-        testForWin();
+        // playSound([side]);
+            $(elem).css("background-color", color[side].on);
+            key[side].down = true;
+            if(startGame){
+                $("#container").css("left", "+=" + moveAmount * dir + "vw");
+                currentPosition += dir;
+                testForWin();
+            }
     }
     function playerKeyUp(side, elem) {
         key[side].down = false;
@@ -309,20 +312,6 @@ $(document).ready(function () {
         playerKeyDown("left", "#leftBox", 1);
         playerKeyUp("right", "#rightBox");
     }); 
-/*     $(document).on("keydown", function (e) {
-        console.log("A: "+e.which);
-        if (useMouse) return;
-        e.preventDefault();
-        if (e.which === key.left.code) { playerKeyDown("left", "#leftBox", 1); }
-        if (e.which === key.right.code) { playerKeyDown("right", "#rightBox", -1); }
-    });
-    $(document).on("keyup", function (e) {
-        console.log("B: "+e.which);
-
-        if (useMouse) return;
-        if (e.which === key.left.code) { playerKeyUp("left", "#leftBox"); }
-        if (e.which === key.right.code) { playerKeyUp("right", "#rightBox"); }
-    }); */
     /*
      * Mouse Events
      */
