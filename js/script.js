@@ -113,7 +113,7 @@ $(document).ready(function () {
     //only used for starting game as of now
     window.setInterval(function () {
         if (gameState !== 0) return;
-        key.left.down && key.right.down ? holdTime++ : holdTime = 0;
+        key.left.down || key.right.down ? holdTime++ : holdTime = 0;
         if (holdTime >= 10) {
             gameState = 1;
             setTimeout(function () { text.html("<h1>3</h1>"); audio.tick.play(); }, 0);
@@ -276,11 +276,9 @@ $(document).ready(function () {
         }
     }
     function playerKeyDown(side, elem, dir) {
-        if (key[side].down || gameState === 1) return;
         playSound([side]);
         $(elem).css("background-color", color[side].on);
         key[side].down = true;
-        if (gameState !== 2) return;
         $("#container").css("left", "+=" + moveAmount * dir + "vw");
         currentPosition += dir;
         testForWin();
@@ -303,16 +301,14 @@ $(document).ready(function () {
      */
     
     $( "#rightBox" ).click(function() {
-        console.log('right');
         playerKeyDown("right", "#rightBox", -1);
         playerKeyUp("left", "#leftBox");
     });
-
+    
     $( "#leftBox" ).click(function() {
-        console.log('left');
         playerKeyDown("left", "#leftBox", 1);
         playerKeyUp("right", "#rightBox");
-    });
+    }); 
 /*     $(document).on("keydown", function (e) {
         console.log("A: "+e.which);
         if (useMouse) return;
