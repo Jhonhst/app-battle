@@ -120,7 +120,7 @@ $(document).ready(function () {
             setTimeout(function () { text.html("<h1>3</h1>"); audio.tick.play(); }, 0);
             setTimeout(function () { text.html("<h1>2</h1>"); audio.tick.play(); }, 1000);
             setTimeout(function () { text.html("<h1>1</h1>"); audio.tick.play(); }, 2000);
-            setTimeout(function () { text.html("<h1>Ahora!</h1>"); playSound("gameStart"); gameState = 2; startGame = true;
+            setTimeout(function () { text.html("<h1>¡Ahora!</h1>"); playSound("gameStart"); gameState = 2; startGame = true;
             }, 3000); setTimeout(function () { text.html(""); }, 4000);
         }
     }, 100);
