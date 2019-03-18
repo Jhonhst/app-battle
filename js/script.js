@@ -268,8 +268,8 @@ $(document).ready(function () {
             gameState = 1;
             currentPosition > 0 ? text.html("¡Gano el rojo!") : text.html("¡Gano el azul!");
             currentPosition = 0;
+            startGame = false;
             setTimeout(function () {
-                startGame = false;
                 gameState = 0;
                 $("#container").animate({"left": "-50vw"}, 500);
                 text.html(html.menu);
