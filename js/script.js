@@ -269,6 +269,7 @@ $(document).ready(function () {
             currentPosition > 0 ? text.html("Red wins!") : text.html("Blue wins!");
             currentPosition = 0;
             setTimeout(function () {
+                startGame = false;
                 gameState = 0;
                 $("#container").animate({"left": "-50vw"}, 500);
                 text.html(html.menu);
