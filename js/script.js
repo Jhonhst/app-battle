@@ -120,7 +120,7 @@ $(document).ready(function () {
             setTimeout(function () { text.html("<h1>3</h1>"); audio.tick.play(); }, 0);
             setTimeout(function () { text.html("<h1>2</h1>"); audio.tick.play(); }, 1000);
             setTimeout(function () { text.html("<h1>1</h1>"); audio.tick.play(); }, 2000);
-            setTimeout(function () { text.html("<h1>GO!</h1>"); playSound("gameStart"); gameState = 2; startGame = true;
+            setTimeout(function () { text.html("<h1>Ahora!</h1>"); playSound("gameStart"); gameState = 2; startGame = true;
             }, 3000); setTimeout(function () { text.html(""); }, 4000);
         }
     }, 100);
@@ -266,7 +266,7 @@ $(document).ready(function () {
         if (Math.abs(currentPosition) === winAmount) {
             playSound("gameOver");
             gameState = 1;
-            currentPosition > 0 ? text.html("Red wins!") : text.html("Blue wins!");
+            currentPosition > 0 ? text.html("¡Gano el rojo!") : text.html("¡Gano el azul!");
             currentPosition = 0;
             setTimeout(function () {
                 gameState = 0;
